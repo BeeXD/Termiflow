@@ -11,6 +11,18 @@
       "requires": ["Get_Weather"],
       "type": "shell",
       "command": "echo 'The current temperature in Bengaluru is {{ results.Get_Weather.current_weather.temperature }} degrees.'"
+    },
+    {
+      "id":"meowfacts",
+      "type":"http",
+      "method":"GET",
+      "url":"https://meowfacts.herokuapp.com/"
+    },
+    {
+      "id":"Log_Meowfact",
+      "type":"shell",
+      "requires":["meowfacts"],
+      "command":"echo 'Random Meowfact: {{ results.meowfacts.data[0] }}'"
     }
   ]
 }
