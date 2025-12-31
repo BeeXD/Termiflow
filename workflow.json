@@ -1,0 +1,15 @@
+{
+  "name": "GitHub Status Checker",
+  "nodes": [
+    {
+      "id": "fetch_api",
+      "type": "httpRequest",
+      "params": { "url": "https://api.github.com/zen" }
+    },
+    {
+      "id": "print_result",
+      "type": "terminalLog",
+      "params": { "prefix": "GitHub says: " }
+    }
+  ]
+}
