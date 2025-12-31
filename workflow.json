@@ -1,15 +1,17 @@
 {
-  "name": "GitHub Status Checker",
   "nodes": [
     {
-      "id": "fetch_api",
-      "type": "httpRequest",
-      "params": { "url": "https://api.github.com/zen" }
+      "id": "Node_A",
+      "command": "echo 'Initializing...'"
     },
     {
-      "id": "print_result",
-      "type": "terminalLog",
-      "params": { "prefix": "GitHub says: " }
+      "id": "Node_B",
+      "command": "echo 'Fetching data from server...'"
+    },
+    {
+      "id": "Node_C",
+      "requires": ["Node_A", "Node_B"],
+      "command": "echo 'Processing: {{ results.Node_B.output }}'"
     }
   ]
 }

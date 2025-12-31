@@ -1,31 +1,32 @@
-import json
-from nodes import execute_http_request, execute_terminal_log
-import networkx as nx
 import typer
-import logging
-from jinja2 import Template
 import json
+import os
+from engine import WorkflowEngine
 
-# Initialize Typer and Logging
-app = typer.Typer()
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+app = typer.Typer(help="Termiflow: A Graph-Based Task Runner")
 
-def run_workflow(file_path):
-    with open(file_path, 'r') as f:
-        workflow = json.load(f)
+@app.command()
+def run(
+    file: str = typer.Argument(..., help="Path to the workflow JSON file"),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable detailed logging")
+):
+    """
+    Step 4: CLI Interface to run workflows.
+    """
+    if not os.path.exists(file):
+        typer.echo(f"Error: File {file} not found.", err=True)
+        raise typer.Exit(code=1)
 
-    print(f"--- Starting Workflow: {workflow['name']} ---")
-    
-    last_output = None
+    with open(file, 'r') as f:
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError:
+            typer.echo("Error: Invalid JSON format.", err=True)
+            raise typer.Exit(code=1)
 
-    for node in workflow['nodes']:
-        if node['type'] == "httpRequest":
-            last_output = execute_http_request(node['params'])
-        
-        elif node['type'] == "terminalLog":
-            last_output = execute_terminal_log(node['params'], last_output)
-
-    print("--- Workflow Finished Successfully ---")
+    engine = WorkflowEngine(data)
+    engine.build_graph()
+    engine.run(verbose=verbose)
 
 if __name__ == "__main__":
-    run_workflow('workflow.json')
+    app()
