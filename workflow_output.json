@@ -1,0 +1,42 @@
+{
+    "Get_Weather": {
+        "latitude": 13.0,
+        "longitude": 77.625,
+        "generationtime_ms": 0.05435943603515625,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 914.0,
+        "current_weather_units": {
+            "time": "iso8601",
+            "interval": "seconds",
+            "temperature": "\u00b0C",
+            "windspeed": "km/h",
+            "winddirection": "\u00b0",
+            "is_day": "",
+            "weathercode": "wmo code"
+        },
+        "current_weather": {
+            "time": "2025-12-31T05:15",
+            "interval": 900,
+            "temperature": 23.8,
+            "windspeed": 3.6,
+            "winddirection": 186,
+            "is_day": 1,
+            "weathercode": 2
+        }
+    },
+    "meowfacts": {
+        "data": [
+            "You check your cats pulse on the inside of the back thigh, where the leg joins to the body. Normal for cats: 110-170 beats per minute."
+        ]
+    },
+    "Log_Weather": {
+        "status": "executed",
+        "val": "echo 'The current temperature in Bengaluru is 23.8 degrees.'"
+    },
+    "Log_Meowfact": {
+        "status": "executed",
+        "val": "echo 'Random Meowfact: You check your cats pulse on the inside of the back thigh, where the leg joins to the body. Normal for cats: 110-170 beats per minute.'"
+    }
+}

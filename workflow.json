@@ -1,15 +1,28 @@
 {
-  "name": "GitHub Status Checker",
   "nodes": [
     {
-      "id": "fetch_api",
-      "type": "httpRequest",
-      "params": { "url": "https://api.github.com/zen" }
+      "id": "Get_Weather",
+      "type": "http",
+      "method": "GET",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current_weather=true"
     },
     {
-      "id": "print_result",
-      "type": "terminalLog",
-      "params": { "prefix": "GitHub says: " }
+      "id": "Log_Weather",
+      "requires": ["Get_Weather"],
+      "type": "shell",
+      "command": "echo 'The current temperature in Bengaluru is {{ results.Get_Weather.current_weather.temperature }} degrees.'"
+    },
+    {
+      "id":"meowfacts",
+      "type":"http",
+      "method":"GET",
+      "url":"https://meowfacts.herokuapp.com/"
+    },
+    {
+      "id":"Log_Meowfact",
+      "type":"shell",
+      "requires":["meowfacts"],
+      "command":"echo 'Random Meowfact: {{ results.meowfacts.data[0] }}'"
     }
   ]
 }

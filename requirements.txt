@@ -1,0 +1,5 @@
+networkx
+typer
+jinja2
+requests
+rich
