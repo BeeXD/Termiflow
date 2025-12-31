@@ -2,7 +2,7 @@
     "Get_Weather": {
         "latitude": 13.0,
         "longitude": 77.625,
-        "generationtime_ms": 0.06580352783203125,
+        "generationtime_ms": 0.047206878662109375,
         "utc_offset_seconds": 0,
         "timezone": "GMT",
         "timezone_abbreviation": "GMT",
@@ -27,7 +27,7 @@
         }
     },
     "Log_Weather": {
-        "status": "success",
-        "command_ran": "echo 'The current temperature in Bengaluru is 23.4 degrees.'"
+        "status": "executed",
+        "val": "echo 'The current temperature in Bengaluru is 23.4 degrees.'"
     }
 }
