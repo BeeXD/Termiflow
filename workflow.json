@@ -1,17 +1,16 @@
 {
   "nodes": [
     {
-      "id": "Node_A",
-      "command": "echo 'Initializing...'"
+      "id": "Get_Weather",
+      "type": "http",
+      "method": "GET",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current_weather=true"
     },
     {
-      "id": "Node_B",
-      "command": "echo 'Fetching data from server...'"
-    },
-    {
-      "id": "Node_C",
-      "requires": ["Node_A", "Node_B"],
-      "command": "echo 'Processing: {{ results.Node_B.output }}'"
+      "id": "Log_Weather",
+      "requires": ["Get_Weather"],
+      "type": "shell",
+      "command": "echo 'The current temperature in Bengaluru is {{ results.Get_Weather.current_weather.temperature }} degrees.'"
     }
   ]
 }

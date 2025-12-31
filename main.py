@@ -3,26 +3,20 @@ import json
 import os
 from engine import WorkflowEngine
 
-app = typer.Typer(help="Termiflow: A Graph-Based Task Runner")
+app = typer.Typer(help="Termiflow: Advanced Graph-Based Task Runner")
 
 @app.command()
 def run(
-    file: str = typer.Argument(..., help="Path to the workflow JSON file"),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable detailed logging")
+    file: str = typer.Argument(..., help="The workflow.json file to execute"),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Show detailed logs")
 ):
-    """
-    Step 4: CLI Interface to run workflows.
-    """
+    """Run a Termiflow project file with dependency mapping."""
     if not os.path.exists(file):
-        typer.echo(f"Error: File {file} not found.", err=True)
+        typer.echo(f"Error: {file} not found.", err=True)
         raise typer.Exit(code=1)
 
     with open(file, 'r') as f:
-        try:
-            data = json.load(f)
-        except json.JSONDecodeError:
-            typer.echo("Error: Invalid JSON format.", err=True)
-            raise typer.Exit(code=1)
+        data = json.load(f)
 
     engine = WorkflowEngine(data)
     engine.build_graph()
