@@ -1,0 +1,33 @@
+# Git files
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Output files (generated during runtime)
+workflow_output.json
+
+# Documentation
+README.md
+*.md
+
+# Screenshots and media
+*.png
+*.jpg
+*.jpeg
