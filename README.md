@@ -31,7 +31,7 @@ termiflow/
     ├── css/
     │   └── style.css    # GUI styles
     └── js/
-        └── app.js       # GUI logic (React Flow)
+        └── app.js       # GUI logic (Vanilla JavaScript & SVG)
 ```
 ## Installation
 

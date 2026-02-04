@@ -91,9 +91,15 @@ def get_node_types():
 
 def main():
     """Start the GUI server."""
+    import os
     print("🚀 Starting Termiflow GUI Server...")
     print("📊 Open http://localhost:5000 in your browser")
-    app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
+    
+    # Use environment variable for host, default to localhost for security
+    host = os.environ.get('TERMIFLOW_HOST', '127.0.0.1')
+    port = int(os.environ.get('TERMIFLOW_PORT', '5000'))
+    
+    app.run(debug=False, host=host, port=port, use_reloader=False)
 
 if __name__ == '__main__':
     main()
