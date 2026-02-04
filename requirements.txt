@@ -3,3 +3,5 @@ typer
 jinja2
 requests
 rich
+flask
+flask-cors

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termiflow - Visual Workflow Editor</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="logo">
+                <h1>🌊 Termiflow</h1>
+                <span class="subtitle">Visual Workflow Editor</span>
+            </div>
+            <div class="toolbar">
+                <button id="loadBtn" class="btn btn-secondary">📂 Load</button>
+                <button id="saveBtn" class="btn btn-primary">💾 Save</button>
+                <button id="runBtn" class="btn btn-success">▶️ Run Workflow</button>
+                <button id="resultsBtn" class="btn btn-info">📊 Results</button>
+            </div>
+        </header>
+        
+        <div class="main-container">
+            <aside class="sidebar">
+                <h3>Node Palette</h3>
+                <div class="node-palette">
+                    <div class="palette-node" data-type="http">
+                        <div class="palette-node-icon">🌐</div>
+                        <div class="palette-node-label">HTTP Request</div>
+                    </div>
+                    <div class="palette-node" data-type="shell">
+                        <div class="palette-node-icon">💻</div>
+                        <div class="palette-node-label">Shell Command</div>
+                    </div>
+                </div>
+            </aside>
+            
+            <div class="canvas-container">
+                <svg id="canvas" width="100%" height="100%">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#667eea" />
+                        </marker>
+                    </defs>
+                    <g id="connections"></g>
+                    <g id="nodes"></g>
+                </svg>
+            </div>
+            
+            <aside class="properties-panel" id="propertiesPanel">
+                <h3>Properties</h3>
+                <div id="propertiesContent">
+                    <p class="placeholder">Select a node to edit its properties</p>
+                </div>
+            </aside>
+        </div>
+        
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Results</h2>
+                <pre id="modalBody"></pre>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

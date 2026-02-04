@@ -20,10 +20,18 @@ Termiflow is a lightweight, graph-based CLI workflow orchestrator designed to au
 ```
 termiflow/
 ├── main.py              # CLI Entry point 
+├── gui.py               # GUI/Web Server (Flask)
 ├── engine.py            # Core Logic (NetworkX & Jinja2)
 ├── workflow.json        # Sample workflow configuration
 ├── workflow_output.json # Generated state after execution
-└── requirements.txt     # Project dependencies
+├── requirements.txt     # Project dependencies
+├── templates/           # HTML templates for GUI
+│   └── index.html       # Main GUI page
+└── static/              # Static assets
+    ├── css/
+    │   └── style.css    # GUI styles
+    └── js/
+        └── app.js       # GUI logic (Vanilla JavaScript & SVG)
 ```
 ## Installation
 
@@ -39,6 +47,23 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
+### GUI Mode (Recommended)
+**Launch the Visual Workflow Editor**
+```bash
+python gui.py
+```
+Then open http://localhost:5000 in your browser.
+
+The GUI provides:
+- 🎨 Visual node-based workflow editor (similar to n8n)
+- 🖱️ Drag-and-drop interface for adding nodes
+- 🔗 Visual connection of node dependencies
+- ⚙️ Interactive property editing
+- ▶️ One-click workflow execution
+- 📊 Real-time results viewer
+
+### CLI Mode
 **Run a Workflow** 
 ```bash
 python main.py run workflow.json
