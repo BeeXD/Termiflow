@@ -24,7 +24,6 @@ ENV/
 workflow_output.json
 
 # Documentation
-README.md
 *.md
 
 # Screenshots and media
