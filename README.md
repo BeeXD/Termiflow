@@ -39,6 +39,8 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
+### Using Python (Local Installation)
 **Run a Workflow** 
 ```bash
 python main.py run workflow.json
@@ -47,6 +49,33 @@ python main.py run workflow.json
 Inspect Node Data
 ```bash
 python main.py inspect [Node_id]
+```
+
+### Using Docker
+**Build the Docker Image**
+```bash
+docker build -t termiflow .
+```
+
+**Run a Workflow with Docker**
+```bash
+# Using the included workflow.json
+docker run --rm termiflow run workflow.json
+
+# Using a custom workflow file
+docker run --rm -v /path/to/your/workflow.json:/app/custom_workflow.json termiflow run custom_workflow.json
+```
+
+**View Help**
+```bash
+docker run --rm termiflow --help
+```
+
+**Inspect Node Data**
+```bash
+# Mount the output directory to persist workflow_output.json
+docker run --rm -v $(pwd)/output:/app termiflow run workflow.json
+docker run --rm -v $(pwd)/output:/app termiflow inspect [Node_id]
 ```
 ## Example Workflow `workflow.json`
 
